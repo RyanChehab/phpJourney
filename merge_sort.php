@@ -1,8 +1,16 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
+
     $array = $_POST['array'];
-    
+
+    if(!is_array($array)){
+        echo json_encode([
+            'status' => 'error',
+            'message' => "invalid input!"
+        ]);
+        exit;
+    }
     function merge_sort($array){
         // base case
         if(count($array) <=1){
@@ -17,6 +25,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         // sorting both halves
         $sortedLeft = merge_sort($left);
         $sortedRight = merge_sort($right);
+
+        return merge($sortedLeft,$sortedRight);
     }
 
     function merge($left,$right){
@@ -29,7 +39,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 $result[] = $left[$i];
                 $i++;
             }else{
-                $result[]= right[$i];
+                $result[]= $right[$i];
                 $j++;
             }
         }
@@ -40,8 +50,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         }
 
         while($j <count($right)){
-            $result[] = $right[$i];
-           $i++;
+            $result[] = $right[$j];
+           $j++;
         }
+        return $result;
     }
+
+    $sortedArray = merge_sort($array);
+
+    echo json_encode([
+        'status' => 'success',
+        'sortedArray' => $sortedArray
+    ]);
 }
