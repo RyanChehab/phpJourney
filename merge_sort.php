@@ -16,6 +16,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
         // sorting both halves
         $sortedLeft = merge_sort($left);
-        $sortedRight = merge_sort($Right);
+        $sortedRight = merge_sort($right);
+    }
+
+    function merge($left,$right){
+        $result= [];
     }
 }
