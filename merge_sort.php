@@ -10,7 +10,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         }
 
         // dividing the array
-        
+        $mid = intdiv(count($array),2);
+        $left = array_slice($array,0,$mid);
+        $right = array_slice($array,$mid);
 
+        // sorting both halves
+        $sortedLeft = merge_sort($left);
+        $sortedRight = merge_sort($Right);
     }
 }
