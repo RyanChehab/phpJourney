@@ -30,7 +30,7 @@ Class LinkedList{
             }
         $current->next = $newNode;
     }
-    
+
     private function countVowels($string) {
         $vowels = ['a', 'e', 'i', 'o', 'u'];
         $count = 0;
@@ -40,9 +40,18 @@ Class LinkedList{
                 $count++;
             }
         }
-    
         return $count;
     }
 
-}
+    public function printNodesWithTwoVowels() {
+        $current = $this->head;
 
+        while ($current !== null) {
+
+            if ($this->countVowels($current->value) === 2) {
+                echo $current->value . "\n";
+            }
+            $current = $current->next;
+        }
+    }  
+}
