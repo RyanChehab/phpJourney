@@ -2,8 +2,9 @@
 class user {
     private $id;
 
-    public function __construct($id){
+    public function __construct($id,$name){
         $this->id =$id;
+        $this->name = $name;
     }
 
     public static function checkPassowrd($password){
@@ -34,8 +35,23 @@ class user {
             return 'invalid email!';
         }
     }
+
+    public function copy_with($id = null, $name = null){
+        return new user(
+            $id ?? $this->id,
+            $name ?? $this->name        
+        );
+    }
+
+    public function display() {
+        echo "ID: {$this->id}, Name: {$this->name}" . PHP_EOL;
+    }
+
 }
 
-$ryan = new user(4);
+$ryan = new user(4,'Ryan');
 echo $ryan->checkPassowrd('hinjnsmwoSmewpfmd@');
 echo $ryan->validateEmail("example@gmail.com");
+$ryan->display();
+$user2 = $ryan->copy_with(id:2);
+$user2->display();
