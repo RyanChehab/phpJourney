@@ -25,3 +25,6 @@ class user {
         return "password is valid";
     }
 }
+
+$ryan = new user(4);
+echo $ryan->checkPassowrd('hinjnsmwomewpfmdS@');
