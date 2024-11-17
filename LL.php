@@ -24,11 +24,12 @@ Class LinkedList{
         }
         else{
             $current = $this->head;
-            while(current->next !==null){
-                $current= $current->$next;
+            while($current->next !==null){
+                $current= $current->next;
             }
-            }
-        $current->next = $newNode;
+            $current->next = $newNode;
+        }
+        
     }
 
     private function countVowels($string) {
@@ -55,3 +56,15 @@ Class LinkedList{
         }
     }  
 }
+
+$list = new LinkedList();
+
+
+$list->addNode("Ryan");
+$list->addNode("Taha");
+$list->addNode("Charbel");
+$list->addNode("Nabiha");
+
+
+echo "Nodes with exactly 2 vowels:   ";
+$list->printNodesWithTwoVowels();
