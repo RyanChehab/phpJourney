@@ -6,7 +6,7 @@ class user {
         $this->id =$id;
     }
 
-    public function checkPassowrd($password){
+    public static function checkPassowrd($password){
         if(strlen($password) < 12){
             return "Password must be at least 12 char";
         }
@@ -24,7 +24,18 @@ class user {
         }
         return "password is valid";
     }
+
+    public static function validateEmail($email){
+        $pattern = '/@.*\./';
+        if(preg_match($pattern,$email)){
+            return "Valid email!";
+        }
+        else{
+            return 'invalid email!';
+        }
+    }
 }
 
 $ryan = new user(4);
-echo $ryan->checkPassowrd('hinjnsmwomewpfmdS@');
+echo $ryan->checkPassowrd('hinjnsmwoSmewpfmd@');
+echo $ryan->validateEmail("example@gmail.com");
